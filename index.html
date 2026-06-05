@@ -1,0 +1,1171 @@
+﻿<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digital Portfolio - Đinh Thị Hồng Liễu</title>
+  <style>
+    :root {
+      --ink: #0b1f33;
+      --muted: #5b7188;
+      --paper: #edf7ff;
+      --panel: rgba(255, 255, 255, .9);
+      --line: #9cc9e8;
+      --cyan: #38bdf8;
+      --blue: #2563eb;
+      --deep: #0f2f55;
+      --soft: #dbeafe;
+      --shadow: 0 26px 72px rgba(15, 47, 85, .22);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.5;
+      background:
+        linear-gradient(rgba(15,47,85,.09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15,47,85,.09) 1px, transparent 1px),
+        radial-gradient(circle at 15% 8%, rgba(56,189,248,.25), transparent 30%),
+        radial-gradient(circle at 85% 12%, rgba(37,99,235,.20), transparent 32%),
+        linear-gradient(180deg, #eaf6ff, #c7e7ff 45%, #edf7ff);
+      background-size: 42px 42px, 42px 42px, auto, auto, auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      max-width: 1280px;
+      margin: 0 auto 8px;
+      padding: 12px 18px;
+      background: rgba(239, 249, 255, .86);
+      border: 1px solid rgba(125, 211, 252, .56);
+      border-radius: 0 0 22px 22px;
+      box-shadow: 0 16px 42px rgba(8,47,73,.13);
+      backdrop-filter: blur(14px);
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .nav button, .control button, .page-button {
+      border: 1px solid #93c5fd;
+      border-radius: 999px;
+      padding: 9px 14px;
+      color: var(--deep);
+      background: rgba(255,255,255,.86);
+      font-size: 14px;
+      font-weight: 800;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+    }
+
+    .nav button:hover, .nav button.active, .control button:hover, .control button.active, .page-button:hover {
+      color: white;
+      background: linear-gradient(180deg, var(--cyan), var(--blue));
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(15, 136, 201, .25);
+    }
+
+    .control {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      width: 270px;
+      padding: 16px;
+      border: 1px solid rgba(125,211,252,.72);
+      border-radius: 18px;
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 20px 46px rgba(8,47,73,.18);
+      backdrop-filter: blur(14px);
+    }
+
+    .control strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--deep);
+    }
+
+    .control-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .progress {
+      height: 8px;
+      margin-top: 12px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #d4f0fb;
+    }
+
+    .progress span {
+      display: block;
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--cyan), var(--deep));
+      transition: width .35s ease;
+    }
+
+    .page {
+      position: relative;
+      width: 1280px;
+      min-height: 720px;
+      margin: 28px auto;
+      padding: 46px 58px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.72);
+      border-radius: 18px;
+      background:
+        linear-gradient(rgba(15,47,85,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15,47,85,.06) 1px, transparent 1px),
+        radial-gradient(circle at 12% 18%, rgba(37,99,235,.17), transparent 28%),
+        radial-gradient(circle at 88% 82%, rgba(56,189,248,.16), transparent 34%),
+        linear-gradient(115deg, rgba(37,99,235,.13), transparent 40%),
+        linear-gradient(45deg, transparent 62%, rgba(147,197,253,.22)),
+        var(--paper);
+      background-size: 38px 38px, 38px 38px, auto, auto, auto, auto, auto;
+      box-shadow: var(--shadow);
+      page-break-after: always;
+    }
+
+    .page::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 14px;
+      height: 100%;
+      background: linear-gradient(var(--cyan), var(--blue), var(--deep));
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      left: -80px;
+      bottom: -80px;
+      width: 330px;
+      height: 330px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, transparent 45%, rgba(15,47,85,.16) 46%, transparent 48%),
+        conic-gradient(from 20deg, transparent 0 12%, rgba(37,99,235,.18) 12% 14%, transparent 14% 28%, rgba(56,189,248,.18) 28% 30%, transparent 30%);
+      opacity: .72;
+      pointer-events: none;
+      animation: spin 26s linear infinite;
+    }
+
+    .tech-cover {
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(rgba(56,189,248,.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56,189,248,.12) 1px, transparent 1px),
+        radial-gradient(circle at 50% 50%, rgba(56,189,248,.30), transparent 23%),
+        radial-gradient(circle at 18% 80%, rgba(37,99,235,.28), transparent 32%),
+        radial-gradient(circle at 86% 18%, rgba(147,197,253,.24), transparent 26%),
+        linear-gradient(135deg, #061a2f, #0f2f55 45%, #020617);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .tech-cover h1 {
+      position: relative;
+      z-index: 5;
+      margin: 0;
+      font-size: 96px;
+      line-height: 1;
+      color: #eef8ff;
+      letter-spacing: .01em;
+      text-align: center;
+      text-shadow: 0 18px 48px rgba(0,0,0,.42), 0 0 30px rgba(56,189,248,.70);
+    }
+
+    .tech-cover h1::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -18px;
+      width: 100%;
+      height: 5px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, var(--cyan), var(--deep), transparent);
+      animation: scanLine 2.4s ease-in-out infinite;
+    }
+
+    .tech-cover .footer { display: none; }
+
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(7,89,133,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(7,89,133,.08) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: radial-gradient(circle at center, black, transparent 78%);
+      animation: gridMove 12s linear infinite;
+    }
+
+    .circuit {
+      position: absolute;
+      width: 260px;
+      height: 160px;
+      border: 2px solid rgba(15,136,201,.34);
+      border-radius: 22px;
+      opacity: .9;
+      animation: floatTech 4s ease-in-out infinite;
+    }
+
+    .circuit::before, .circuit::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 20px rgba(52,195,241,.8);
+    }
+
+    .circuit::before { width: 18px; height: 18px; left: 32px; top: 32px; }
+    .circuit::after { width: 14px; height: 14px; right: 38px; bottom: 34px; }
+
+    .circuit.left { left: 92px; top: 110px; }
+    .circuit.right { right: 100px; bottom: 100px; animation-delay: -1.6s; }
+
+    .chip {
+      position: absolute;
+      right: 170px;
+      top: 92px;
+      width: 132px;
+      height: 132px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 34px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--deep), var(--cyan));
+      box-shadow: 0 24px 50px rgba(7,89,133,.26);
+      animation: floatTech 3.6s ease-in-out infinite;
+    }
+
+    .chip span {
+      position: relative;
+      z-index: 2;
+    }
+
+    .chip::before {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      border: 2px dashed rgba(7,89,133,.30);
+      border-radius: 28px;
+      animation: spin 12s linear infinite;
+    }
+
+    .robot {
+      position: absolute;
+      left: 175px;
+      bottom: 110px;
+      width: 130px;
+      height: 158px;
+      animation: floatTech 3.2s ease-in-out infinite;
+    }
+
+    .robot-head {
+      position: absolute;
+      left: 15px;
+      top: 0;
+      width: 100px;
+      height: 76px;
+      border-radius: 22px;
+      background: white;
+      border: 2px solid #9bdcf2;
+      box-shadow: 0 18px 36px rgba(8,47,73,.15);
+    }
+
+    .robot-head::before, .robot-head::after {
+      content: "";
+      position: absolute;
+      top: 28px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 12px rgba(52,195,241,.8);
+      animation: blink 2.8s infinite;
+    }
+
+    .robot-head::before { left: 28px; }
+    .robot-head::after { right: 28px; }
+
+    .robot-body {
+      position: absolute;
+      left: 28px;
+      top: 86px;
+      width: 74px;
+      height: 76px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #ffffff, #dff5ff);
+      border: 2px solid #9bdcf2;
+    }
+
+    .node {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 18px rgba(52,195,241,.9);
+      animation: nodeDrift 5s ease-in-out infinite;
+    }
+
+    .n1 { left: 390px; top: 170px; }
+    .n2 { right: 330px; top: 430px; animation-delay: -1.2s; }
+    .n3 { left: 540px; bottom: 120px; animation-delay: -2.1s; }
+    .n4 { right: 470px; top: 150px; animation-delay: -3s; }
+
+    .beam {
+      position: absolute;
+      inset: -20%;
+      background: linear-gradient(115deg, transparent 42%, rgba(255,255,255,.38), transparent 58%);
+      transform: translateX(-60%);
+      animation: beamSweep 4.5s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: .72fr 1.28fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .side-note {
+      padding: 22px 24px;
+      border-left: 6px solid var(--blue);
+      border-radius: 18px;
+      background: var(--soft);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.7), 0 18px 42px rgba(14,165,198,.13);
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      color: var(--blue);
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 34px;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--blue);
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: 38px;
+      line-height: 1.15;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      color: var(--deep);
+      font-size: 22px;
+    }
+
+    p, li {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .content {
+      display: grid;
+      gap: 14px;
+    }
+
+    .card, .summary-item, .placeholder, .prompt, .insight, .step, .skill {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--panel);
+      box-shadow: 0 12px 28px rgba(8,47,73,.08);
+      backdrop-filter: blur(10px);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+
+    .card:hover, .summary-item:hover, .placeholder:hover, .prompt:hover, .insight:hover, .step:hover, .skill:hover {
+      transform: translateY(-3px);
+      border-color: #7dd3fc;
+      box-shadow: 0 18px 38px rgba(8,47,73,.13);
+    }
+
+    .card, .prompt, .insight { padding: 18px 20px; }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .summary-item {
+      padding: 14px 16px;
+      background: linear-gradient(180deg, #ffffff, #e7f8ff);
+    }
+
+    .summary-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--deep);
+      font-size: 15px;
+    }
+
+    .summary-item span {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .two-col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .four-col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
+    .skill {
+      padding: 14px;
+      color: var(--deep);
+      font-weight: 900;
+      text-align: center;
+      background: rgba(255,255,255,.72);
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      counter-reset: step;
+    }
+
+    .step {
+      min-height: 108px;
+      padding: 15px 12px;
+      background: #ffffff;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      display: inline-grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      margin-bottom: 8px;
+      border-radius: 50%;
+      color: white;
+      background: linear-gradient(180deg, var(--cyan), var(--deep));
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .step strong {
+      display: block;
+      color: var(--deep);
+      font-size: 15px;
+    }
+
+    .step span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .placeholder {
+      min-height: 160px;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      color: var(--muted);
+      font-weight: 900;
+      text-align: center;
+      cursor: pointer;
+      background:
+        linear-gradient(45deg, rgba(52,195,241,.10) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(15,136,201,.09) 25%, transparent 25%),
+        #ffffff;
+    }
+
+    .profile-photo {
+      min-height: 230px;
+      margin: 18px 0 4px;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 34px rgba(15,47,85,.16);
+      background:
+        linear-gradient(rgba(15,47,85,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15,47,85,.08) 1px, transparent 1px),
+        linear-gradient(135deg, rgba(56,189,248,.18), rgba(255,255,255,.92));
+      background-size: 26px 26px, 26px 26px, auto;
+    }
+
+    .profile-photo img {
+      display: block;
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      object-position: center 42%;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      padding: 8px 13px;
+      border: 1px solid #93d8ef;
+      border-radius: 999px;
+      color: var(--deep);
+      background: linear-gradient(180deg, #ffffff, #e9fbff);
+      font-size: 14px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform .18s ease, background .18s ease, color .18s ease;
+    }
+
+    .tag:hover, .tag.selected {
+      color: white;
+      background: linear-gradient(180deg, var(--cyan), var(--blue));
+      transform: translateY(-2px);
+    }
+
+    .evidence-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      color: var(--deep);
+      background: linear-gradient(135deg, rgba(255,255,255,.94), rgba(219,234,254,.88));
+      box-shadow: 0 12px 28px rgba(8,47,73,.08);
+      text-decoration: none;
+      font-weight: 900;
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+
+    .evidence-link:hover {
+      transform: translateY(-3px);
+      border-color: #7dd3fc;
+      box-shadow: 0 18px 38px rgba(8,47,73,.13);
+    }
+
+    .evidence-link span {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .pdf-slot {
+      display: grid;
+      place-items: center;
+      min-height: 160px;
+      padding: 18px;
+      border: 1px dashed #7dd3fc;
+      border-radius: 18px;
+      color: var(--deep);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.92), rgba(219,234,254,.82)),
+        linear-gradient(45deg, rgba(56,189,248,.10) 25%, transparent 25%);
+      text-align: center;
+      text-decoration: none;
+      font-weight: 900;
+      box-shadow: 0 14px 30px rgba(15,47,85,.10);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+
+    .pdf-slot:hover {
+      transform: translateY(-3px);
+      border-color: var(--cyan);
+      box-shadow: 0 18px 40px rgba(15,47,85,.16);
+    }
+
+    .pdf-slot span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffff;
+      font-size: 15px;
+    }
+
+    th, td {
+      height: 40px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th {
+      color: white;
+      background: var(--deep);
+      text-align: left;
+    }
+
+    .insight {
+      position: relative;
+      padding-left: 24px;
+      background: linear-gradient(135deg, rgba(52,195,241,.14), rgba(255,255,255,.92));
+      overflow: hidden;
+    }
+
+    .insight::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 7px;
+      height: 100%;
+      background: linear-gradient(var(--cyan), var(--deep));
+    }
+
+    details.card summary {
+      color: var(--deep);
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .page-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .page-button.done {
+      color: white;
+      border-color: transparent;
+      background: linear-gradient(180deg, var(--blue), var(--deep));
+      animation: softPulse 1.2s ease;
+    }
+
+    .footer {
+      position: absolute;
+      left: 58px;
+      right: 58px;
+      bottom: 22px;
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px) scale(.985);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .focus-mode .page:not(.current) {
+      opacity: .24;
+      filter: saturate(.55);
+    }
+
+    @keyframes gridMove {
+      from { background-position: 0 0, 0 0; }
+      to { background-position: 46px 46px, 46px 46px; }
+    }
+
+    @keyframes scanLine {
+      0%, 100% { transform: scaleX(.35); opacity: .55; }
+      50% { transform: scaleX(1); opacity: 1; }
+    }
+
+    @keyframes beamSweep {
+      0%, 45% { transform: translateX(-70%); opacity: 0; }
+      70% { opacity: 1; }
+      100% { transform: translateX(70%); opacity: 0; }
+    }
+
+    @keyframes floatTech {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    @keyframes nodeDrift {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: .7; }
+      50% { transform: translate(18px, -18px) scale(1.25); opacity: 1; }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes blink {
+      0%, 85%, 100% { transform: scaleY(1); }
+      90% { transform: scaleY(.15); }
+    }
+
+    @keyframes softPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(52,195,241,.35); }
+      50% { box-shadow: 0 0 0 9px rgba(52,195,241,0); }
+    }
+
+    @media print {
+      body { background: white; }
+      .nav, .control, .page-actions { display: none !important; }
+      .page {
+        width: 100vw;
+        min-height: 100vh;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Điều hướng portfolio">
+    <button class="active" data-target="0">Bìa</button>
+    <button data-target="1">Giới thiệu</button>
+    <button data-target="2">Bài 1</button>
+    <button data-target="3">Bài 2</button>
+    <button data-target="4">Bài 3</button>
+    <button data-target="5">Bài 4</button>
+    <button data-target="6">Bài 5</button>
+    <button data-target="7">Bài 6</button>
+    <button data-target="8">Bài 7</button>
+    <button data-target="9">Tổng kết</button>
+  </nav>
+
+  <aside class="control" aria-label="Tùy chọn hiển thị">
+    <strong>Tùy chọn hiển thị</strong>
+    <div class="control-row">
+      <button class="active" data-view="full">Đầy đủ</button>
+      <button data-view="focus">Tập trung</button>
+      <button data-view="print">In/PDF</button>
+    </div>
+    <div class="progress"><span id="progress"></span></div>
+  </aside>
+
+  <section class="page tech-cover">
+    <div class="grid-bg"></div>
+    <div class="beam"></div>
+    <div class="circuit left"></div>
+    <div class="circuit right"></div>
+    <div class="chip"><span>AI</span></div>
+    <div class="robot"><div class="robot-head"></div><div class="robot-body"></div></div>
+    <span class="node n1"></span><span class="node n2"></span><span class="node n3"></span><span class="node n4"></span>
+    <h1>Digital Portfolio</h1>
+    <div class="footer"><span>Đinh Thị Hồng Liễu</span><span>01</span></div>
+  </section>
+
+  <section class="page">
+    <div class="section-grid">
+      <aside class="side-note">
+        <div class="kicker">Giới thiệu</div>
+        <h2>Đinh Thị Hồng Liễu</h2>
+        <p><strong>Ngành học:</strong> Công nghệ hàng không vũ trụ</p>
+        <p><strong>Định hướng:</strong> Phát triển theo hướng kỹ sư/chuyên viên ứng dụng công nghệ số và AI trong lĩnh vực hàng không vũ trụ, đặc biệt ở mô phỏng, tối ưu quy trình và an toàn hệ thống.</p>
+        <div class="profile-photo"><img src="profile-photo.jpg" alt="Ảnh cá nhân của Đinh Thị Hồng Liễu"></div>
+        <div class="tag-row">
+          <span class="tag">Đọc sách</span>
+          <span class="tag">Công nghệ bay</span>
+          <span class="tag">AI ứng dụng</span>
+        </div>
+      </aside>
+      <main class="content">
+        <div class="summary">
+          <div class="summary-item"><strong>Chân dung</strong><span>Sinh viên Công nghệ hàng không vũ trụ yêu thích đọc sách và công nghệ.</span></div>
+          <div class="summary-item"><strong>Giá trị</strong><span>Tư duy kỹ thuật, học công cụ mới, phản biện thông tin.</span></div>
+          <div class="summary-item"><strong>Mục tiêu</strong><span>Xây dựng hồ sơ năng lực số có minh chứng rõ ràng.</span></div>
+        </div>
+        <div class="card">
+          <h3>1. Lời chào & Giới thiệu bản thân</h3>
+          <p>Xin chào, tôi là <strong>Đinh Thị Hồng Liễu</strong>, hiện đang theo học ngành <strong>Công nghệ hàng không vũ trụ</strong>. Tôi xem Digital Portfolio này như một không gian học tập số để ghi lại quá trình tôi từng bước khám phá, thực hành và làm chủ các công cụ công nghệ trong môn học.</p>
+          <p>Tôi yêu thích đọc sách, tìm hiểu công nghệ bay và quan tâm đến cách trí tuệ nhân tạo có thể hỗ trợ học tập, mô phỏng và phân tích trong các lĩnh vực kỹ thuật. Những mối quan tâm này giúp tôi nhìn thấy công nghệ không chỉ là công cụ thao tác, mà còn là phương pháp tư duy để giải quyết vấn đề phức tạp.</p>
+        </div>
+        <div class="card">
+          <h3>2. Định hướng phát triển & Mục tiêu học tập</h3>
+          <p>Tôi muốn phát triển năng lực sử dụng công nghệ số và AI để tìm kiếm tri thức, mô phỏng ý tưởng, quản lý tài liệu kỹ thuật và trình bày kết quả một cách rõ ràng. Với ngành Công nghệ hàng không vũ trụ, đây là nền tảng quan trọng để tiếp cận các hệ thống phức tạp một cách khoa học và an toàn.</p>
+        </div>
+        <div class="insight">
+          <h3>Điểm nhấn thương hiệu cá nhân</h3>
+          <p>Tôi muốn hình ảnh cá nhân của mình gắn với sự kỷ luật trong học tập, tinh thần đọc sâu, khả năng học công cụ mới nhanh và thái độ dùng AI như một trợ lý tư duy thay vì một lối tắt.</p>
+        </div>
+      </main>
+    </div>
+    <div class="footer"><span>Trang Giới thiệu</span><span>02</span></div>
+  </section>
+
+  <section class="page">
+    <div class="section-grid">
+      <aside class="side-note">
+        <div class="kicker">Bài 1</div>
+        <h2>Thao tác cơ bản với tệp tin và thư mục</h2>
+        <p>Thực hành tạo, đổi tên, sao chép, di chuyển, xóa và khôi phục tệp/thư mục trên Windows.</p>
+        <a class="pdf-slot" href="btCNS1.pdf" target="_blank">Minh chứng PDF - Bài 1<span>Mở btCNS1.pdf</span></a>
+      </aside>
+      <main class="content">
+        <div class="summary">
+          <div class="summary-item"><strong>Mục tiêu</strong><span>Làm chủ thao tác cơ bản với File Explorer.</span></div>
+          <div class="summary-item"><strong>Thực hành</strong><span>Tạo thư mục, đổi tên file, copy, cut, delete và restore.</span></div>
+          <div class="summary-item"><strong>Kết quả</strong><span>Hiểu khác biệt giữa xóa tạm, xóa vĩnh viễn và khôi phục.</span></div>
+        </div>
+        <div class="timeline">
+          <div class="step"><strong>Mở Explorer</strong><span>Dùng Windows + E và truy cập ổ đĩa/thư mục học tập.</span></div>
+          <div class="step"><strong>Tạo thư mục</strong><span>Tạo ThucHanh_hotensinhvien và thư mục con TaiLieu.</span></div>
+          <div class="step"><strong>Tạo file</strong><span>Tạo GhiChu.txt rồi đổi tên thành GhiChuQuanTrong.txt.</span></div>
+          <div class="step"><strong>Copy/Cut</strong><span>Sao chép và di chuyển file vào thư mục TaiLieu.</span></div>
+          <div class="step"><strong>Xóa/Khôi phục</strong><span>Thực hành Delete, Shift + Delete và Restore từ Recycle Bin.</span></div>
+        </div>
+        <div class="card">
+          <h3>Phân tích chuyên sâu</h3>
+          <p>Bài làm giúp tôi hiểu rằng thao tác tệp tin không chỉ là kỹ năng kỹ thuật nhỏ, mà là nền tảng của quản lý tài nguyên số. Việc biết file đang ở đâu, bản nào là bản sao, bản nào đã bị di chuyển hoặc xóa giúp giảm nhầm lẫn và tăng khả năng kiểm soát dữ liệu cá nhân.</p>
+        </div>
+        <div class="insight">
+          <h3>Liên hệ với Công nghệ hàng không vũ trụ</h3>
+          <p>Trong các lĩnh vực kỹ thuật như hàng không vũ trụ, tài liệu, bản vẽ, báo cáo và dữ liệu mô phỏng cần được tổ chức chặt chẽ. Một thao tác nhầm với file có thể dẫn đến dùng sai phiên bản tài liệu, vì vậy kỹ năng quản lý file là bước đầu của tư duy chính xác và an toàn.</p>
+        </div>
+      </main>
+    </div>
+    <div class="footer"><span>Trang Dự án</span><span>03</span></div>
+  </section>
+
+  <section class="page">
+    <div class="section-grid">
+      <aside class="side-note">
+        <div class="kicker">Bài 2</div>
+        <h2>Tìm kiếm và đánh giá thông tin học thuật</h2>
+        <p>Chủ đề: vật liệu composite siêu nhẹ trong chế tạo vỏ tên lửa đẩy thế hệ mới.</p>
+        <div class="tag-row">
+          <span class="tag">site:</span><span class="tag">filetype:</span><span class="tag">intitle:</span><span class="tag">"quotes"</span>
+        </div>
+        <a class="pdf-slot" href="btCNS2.pdf" target="_blank">Minh chứng PDF - Bài 2<span>Mở btCNS2.pdf</span></a>
+      </aside>
+      <main class="content">
+        <div class="summary">
+          <div class="summary-item"><strong>Phạm vi</strong><span>Nghiên cứu vật liệu chịu nhiệt, bền cơ học cao giai đoạn 2018-2026.</span></div>
+          <div class="summary-item"><strong>Nguồn tìm kiếm</strong><span>IEEE Xplore, ScienceDirect, Google Scholar, AIAA, NASA, SpaceX.</span></div>
+          <div class="summary-item"><strong>Mục tiêu</strong><span>Đánh giá khả năng giảm trọng lượng để tối ưu nhiên liệu.</span></div>
+        </div>
+        <div class="card">
+          <h3>Quy trình thực hiện</h3>
+          <p>Tôi chọn chủ đề liên quan trực tiếp đến ngành Công nghệ hàng không vũ trụ: <strong>nghiên cứu và ứng dụng vật liệu composite siêu nhẹ trong chế tạo vỏ tên lửa đẩy thế hệ mới</strong>. Quá trình tìm kiếm kết hợp cơ sở dữ liệu học thuật, tạp chí chuyên ngành, sách chuyên khảo và nguồn mở từ cơ quan/doanh nghiệp hàng không vũ trụ.</p>
+        </div>
+        <table>
+          <thead><tr><th>STT</th><th>Nhóm nguồn</th><th>Ví dụ nguồn</th><th>Giá trị sử dụng</th><th>Độ tin cậy</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>CSDL học thuật</td><td>IEEE Xplore, ScienceDirect</td><td>Bài báo phản biện kín, có mô phỏng số và thực nghiệm chi tiết.</td><td>4/4</td></tr>
+            <tr><td>2</td><td>Tạp chí chuyên ngành</td><td>AIAA Journal, Nature Aerospace</td><td>Thông số kỹ thuật, hệ số an toàn, độ bền vật liệu.</td><td>4/4</td></tr>
+            <tr><td>3</td><td>Sách chuyên khảo</td><td>AIAA Education Series, Springer</td><td>Nền tảng lý thuyết vật liệu và kết cấu hàng không.</td><td>3/4</td></tr>
+            <tr><td>4</td><td>Nguồn mở kỹ thuật</td><td>NASA, ESA, SpaceX</td><td>Báo cáo thực tế từ chương trình Artemis/SLS và tài liệu doanh nghiệp.</td><td>3/4</td></tr>
+          </tbody>
+        </table>
+        <div class="three-col">
+          <div class="card"><h3>Authority</h3><p>Ưu tiên AIAA, NASA, tạp chí ISI/Scopus và cơ sở dữ liệu học thuật có phản biện.</p></div>
+          <div class="card"><h3>Accuracy</h3><p>Kiểm tra tác giả, phương pháp nghiên cứu, trích dẫn, số liệu thực nghiệm và tính cập nhật.</p></div>
+          <div class="card"><h3>Relevance</h3><p>Nguồn phải liên quan trực tiếp đến composite, chịu nhiệt, độ bền cơ học và ứng dụng tên lửa.</p></div>
+        </div>
+      </main>
+    </div>
+    <div class="footer"><span>Trang Dự án</span><span>04</span></div>
+  </section>
+
+  <section class="page">
+    <div class="section-grid">
+      <aside class="side-note">
+        <div class="kicker">Bài 3</div>
+        <h2>Viết Prompt hiệu quả cho học tập</h2>
+        <p>Thử nghiệm 9 prompt trên 3 tác vụ học tập: tóm tắt bài đọc, giải thích khái niệm và tạo câu hỏi ôn tập.</p>
+        <a class="pdf-slot" href="btCNS3.pdf" target="_blank">Minh chứng PDF - Bài 3<span>Mở btCNS3.pdf</span></a>
+      </aside>
+      <main class="content">
+        <div class="summary">
+          <div class="summary-item"><strong>3 tác vụ</strong><span>Tóm tắt học thuật, giải thích entropy, tạo câu hỏi ôn tập.</span></div>
+          <div class="summary-item"><strong>3 cấp độ</strong><span>Prompt cơ bản, cải tiến và nâng cao.</span></div>
+          <div class="summary-item"><strong>Kỹ thuật</strong><span>Role prompting, chain-of-thought, output format, few-shot.</span></div>
+        </div>
+        <div class="two-col">
+          <div class="prompt"><h3>Prompt cơ bản</h3><p>“Tóm tắt bài này cho tôi.” hoặc “Giải thích entropy cho tôi.” Kết quả thường chung chung, thiếu đối tượng, thiếu độ dài và thiếu cấu trúc học thuật.</p></div>
+          <div class="prompt"><h3>Prompt nâng cao</h3><p>Gán vai trò chuyên gia, chia bước xử lý, yêu cầu cấu trúc IMRaD/scaffolding/Bloom’s taxonomy và cung cấp ví dụ format đầu ra để AI tạo kết quả sâu hơn.</p></div>
+        </div>
+        <div class="timeline">
+          <div class="step"><strong>Context</strong><span>Xác định người học, trình độ và mục đích sử dụng.</span></div>
+          <div class="step"><strong>Role</strong><span>Giao AI vai trò nhà nghiên cứu, giáo viên vật lý hoặc giáo viên lịch sử.</span></div>
+          <div class="step"><strong>Step-by-step</strong><span>Yêu cầu AI xử lý tuần tự từng bước để không bỏ sót.</span></div>
+          <div class="step"><strong>Format</strong><span>Chỉ định IMRaD, scaffolding hoặc ma trận Bloom.</span></div>
+          <div class="step"><strong>Few-shot</strong><span>Cho ví dụ mẫu để AI bắt chước đúng cấu trúc đầu ra.</span></div>
+        </div>
+        <div class="insight">
+          <h3>Điểm hiểu sâu</h3>
+          <p>Kết quả thực nghiệm cho thấy prompt càng rõ vai trò, bối cảnh, cấu trúc và tiêu chí đầu ra thì kết quả càng có chiều sâu. Prompt nâng cao không chỉ tạo nội dung “đúng”, mà còn tạo nội dung có khả năng dùng được cho học tập nghiêm túc: có phê bình học thuật, ví dụ sư phạm và hệ thống câu hỏi theo mức độ tư duy.</p>
+        </div>
+      </main>
+    </div>
+    <div class="footer"><span>Trang Dự án</span><span>05</span></div>
+  </section>
+
+  <section class="page">
+    <div class="section-grid">
+      <aside class="side-note">
+        <div class="kicker">Bài 4</div>
+        <h2>Sử dụng công cụ hợp tác trực tuyến</h2>
+        <p>Công cụ: <strong>Trello, Google Docs, Google Drive và Zalo/Facebook</strong></p>
+        <a class="pdf-slot" href="btCNS4.pdf" target="_blank">Minh chứng PDF - Bài 4<span>Mở btCNS4.pdf</span></a>
+      </aside>
+      <main class="content">
+        <div class="summary">
+          <div class="summary-item"><strong>Vai trò</strong><span>Thành viên phụ trách nội dung và theo dõi tiến độ cá nhân.</span></div>
+          <div class="summary-item"><strong>Công cụ</strong><span>Trello quản lý task, Google Docs/Drive cộng tác và lưu trữ.</span></div>
+          <div class="summary-item"><strong>Thời gian</strong><span>Dự án nhóm nhỏ được triển khai trong 1 tuần.</span></div>
+        </div>
+        <div class="three-col">
+          <div class="card"><h3>Trello</h3><p>Tạo các danh sách To Do, Doing, Done để theo dõi viết nội dung, tổng hợp tài liệu và chỉnh sửa cuối.</p></div>
+          <div class="card"><h3>Google Docs</h3><p>Viết phần báo cáo, chỉnh lỗi diễn đạt, thêm comment và dùng lịch sử chỉnh sửa để ghi nhận đóng góp.</p></div>
+          <div class="card"><h3>Google Drive</h3><p>Lưu tài liệu theo thư mục dự án, đặt tên file theo phiên bản và thiết lập quyền view/edit phù hợp.</p></div>
+        </div>
+        <div class="timeline">
+          <div class="step"><strong>Nhận nhiệm vụ</strong><span>Viết một phần báo cáo, tổng hợp tài liệu và kiểm tra nội dung.</span></div>
+          <div class="step"><strong>Cập nhật task</strong><span>Di chuyển thẻ Trello từ To Do sang Doing rồi Done.</span></div>
+          <div class="step"><strong>Cộng tác Docs</strong><span>Comment, chỉnh sửa và theo dõi lịch sử đóng góp.</span></div>
+          <div class="step"><strong>Giao tiếp</strong><span>Trao đổi qua Zalo/Facebook để xử lý chậm phản hồi.</span></div>
+          <div class="step"><strong>Rút kinh nghiệm</strong><span>Đặt quy tắc check-in hằng ngày và dùng Suggesting mode.</span></div>
+        </div>
+        <details class="card">
+          <summary>Khó khăn và cách giải quyết</summary>
+          <p>Tôi gặp ba vấn đề chính: thành viên phản hồi chậm, công việc bị chồng chéo trên Google Docs và khó quản lý thời gian cá nhân. Cách giải quyết là thiết lập check-in hằng ngày, dùng Suggesting mode thay vì sửa trực tiếp, đánh dấu phần việc bằng comment và lập kế hoạch theo ngày trên Trello.</p>
+        </details>
+      </main>
+    </div>
+    <div class="footer"><span>Trang Dự án</span><span>06</span></div>
+  </section>
+
+  <section class="page">
+    <div class="section-grid">
+      <aside class="side-note">
+        <div class="kicker">Bài 5</div>
+        <h2>AI tạo sinh hỗ trợ sáng tạo nội dung</h2>
+        <p>Sản phẩm: <strong>bài thuyết trình 10 slide về biến đổi khí hậu và hành động của giới trẻ</strong></p>
+        <a class="pdf-slot" href="btCNS5.pdf" target="_blank">Minh chứng PDF - Bài 5<span>Mở btCNS5.pdf</span></a>
+      </aside>
+      <main class="content">
+        <div class="summary">
+          <div class="summary-item"><strong>Chủ đề</strong><span>Biến đổi khí hậu và hành động của người trẻ 18-25 tuổi.</span></div>
+          <div class="summary-item"><strong>Công cụ AI</strong><span>ChatGPT, Canva AI Magic Write/Magic Design và DALL-E 3.</span></div>
+          <div class="summary-item"><strong>Tỉ lệ đóng góp</strong><span>AI hỗ trợ khoảng 45%, cá nhân chỉnh sửa và sáng tạo khoảng 55%.</span></div>
+        </div>
+        <div class="timeline">
+          <div class="step"><strong>Outline</strong><span>Dùng ChatGPT tạo cấu trúc 10 slide và script thuyết trình.</span></div>
+          <div class="step"><strong>Hình ảnh</strong><span>Dùng DALL-E 3 tạo ảnh rooftop Hà Nội, Trái Đất xanh và hình minh họa.</span></div>
+          <div class="step"><strong>Thiết kế</strong><span>Dùng Canva AI chọn template xanh lá - xanh navy.</span></div>
+          <div class="step"><strong>Rút gọn</strong><span>Dùng Magic Write chuyển đoạn dài thành bullet phù hợp slide.</span></div>
+          <div class="step"><strong>Cá nhân hóa</strong><span>Kiểm chứng số liệu, thêm câu chuyện cá nhân và call-to-action.</span></div>
+        </div>
+        <div class="insight">
+          <h3>Nguyên tắc sáng tạo với AI</h3>
+          <p>Bài làm cho thấy AI không thay thế người sáng tạo mà khuếch đại khả năng sáng tạo có định hướng. ChatGPT mạnh ở outline và script, DALL-E mạnh ở hình ảnh cảm xúc, Canva AI mạnh ở layout; còn phần quyết định thông điệp, kiểm chứng số liệu, chỉnh headline và giữ giọng nói cá nhân vẫn thuộc về tôi.</p>
+        </div>
+      </main>
+    </div>
+    <div class="footer"><span>Trang Dự án</span><span>07</span></div>
+  </section>
+
+  <section class="page">
+    <div class="section-grid">
+      <aside class="side-note">
+        <div class="kicker">Bài 6</div>
+        <h2>Sử dụng AI có trách nhiệm</h2>
+        <p>Bộ nguyên tắc cá nhân giúp tôi dùng AI trung thực, an toàn và có tư duy phản biện.</p>
+        <a class="pdf-slot" href="btCNS6.pdf" target="_blank">Minh chứng PDF - Bài 6<span>Mở btCNS6.pdf</span></a>
+      </aside>
+      <main class="content">
+        <div class="summary">
+          <div class="summary-item"><strong>Chính sách</strong><span>ĐHQGHN tiếp cận AI theo hướng hướng dẫn có trách nhiệm.</span></div>
+          <div class="summary-item"><strong>Nhiệm vụ</strong><span>Viết bài luận 800 chữ về biến đổi khí hậu tại Việt Nam.</span></div>
+          <div class="summary-item"><strong>Nguyên tắc</strong><span>Tự suy nghĩ trước, AI hỗ trợ sau và phải khai báo minh bạch.</span></div>
+        </div>
+        <div class="three-col">
+          <div class="card"><h3>Chính sách</h3><p>AI được dùng như công cụ hỗ trợ nghiên cứu, không được thay thế tư duy và sáng tạo của sinh viên.</p></div>
+          <div class="card"><h3>Thực hành</h3><p>AI hỗ trợ outline, tổng hợp số liệu và viết nháp một số đoạn; tôi kiểm chứng và chỉnh sửa đáng kể.</p></div>
+          <div class="card"><h3>Ranh giới</h3><p>Hỗ trợ hợp lý là gợi ý/tóm tắt/kiểm tra; gian lận là nộp nguyên đầu ra AI hoặc không khai báo khi bắt buộc.</p></div>
+        </div>
+        <div class="four-col">
+          <div class="skill">Tự suy nghĩ trước</div>
+          <div class="skill">Kiểm chứng độc lập</div>
+          <div class="skill">Khai báo minh bạch</div>
+          <div class="skill">Giữ giọng cá nhân</div>
+        </div>
+        <div class="insight">
+          <h3>Bài học đạo đức</h3>
+          <p>Tôi rút ra rằng kỹ năng quan trọng trong kỷ nguyên AI không chỉ là biết dùng AI, mà còn là biết khi nào không nên dùng AI. Công cụ có thể hỗ trợ học tập, nhưng trách nhiệm về tính chính xác, trung thực và chất lượng tư duy vẫn thuộc về người học.</p>
+        </div>
+      </main>
+    </div>
+    <div class="footer"><span>Trang Dự án</span><span>08</span></div>
+  </section>
+
+  <section class="page">
+    <div class="section-grid">
+      <aside class="side-note">
+        <div class="kicker">Bài 7</div>
+        <h2>Ứng dụng vật liệu Graphene trong pin</h2>
+        <p>Tổng quan 5 bài báo khoa học cập nhật về graphene trong pin lithium-ion, pin xe điện và quản lý nhiệt.</p>
+        <a class="pdf-slot" href="btCNS7.pdf" target="_blank">Minh chứng PDF - Bài 7<span>Mở btCNS7.pdf</span></a>
+      </aside>
+      <main class="content">
+        <div class="summary">
+          <div class="summary-item"><strong>Chủ đề</strong><span>Graphene trong pin lithium-ion và hệ thống quản lý nhiệt xe điện.</span></div>
+          <div class="summary-item"><strong>Công cụ</strong><span>Elicit/Consensus kết hợp Google Scholar và Semantic Scholar.</span></div>
+          <div class="summary-item"><strong>Phạm vi</strong><span>Bài báo ISI/Scopus uy tín giai đoạn 2024-2026.</span></div>
+        </div>
+        <div class="card">
+          <h3>Câu hỏi nghiên cứu</h3>
+          <p>Graphene và các dẫn xuất của nó như graphene oxide, màng graphene và nano composite graphene có thể cải thiện những đặc tính nào của pin lithium-ion và hệ thống quản lý nhiệt pin xe điện? Đâu là thách thức trong thương mại hóa công nghệ này?</p>
+        </div>
+        <div class="three-col">
+          <div class="card"><h3>Điện cực</h3><p>Graphene cải thiện cathode/anode, tăng tốc độ sạc/xả, độ ổn định chu kỳ và tuổi thọ pin.</p></div>
+          <div class="card"><h3>Sản xuất</h3><p>Màng graphene quy mô lớn dài 200 m cho thấy triển vọng thương mại hóa trong pin linh hoạt.</p></div>
+          <div class="card"><h3>Quản lý nhiệt</h3><p>Graphene hỗ trợ tản nhiệt, giảm dao động nhiệt độ và cải thiện an toàn pin xe điện.</p></div>
+        </div>
+        <div class="insight">
+          <h3>Nhận xét tổng hợp</h3>
+          <p>5 bài báo đều khẳng định graphene có tiềm năng lớn trong lưu trữ năng lượng nhờ độ dẫn điện/nhiệt cao, diện tích bề mặt lớn và độ bền cơ học tốt. Thách thức chính là chi phí sản xuất, quy trình tổng hợp phức tạp và nhu cầu chuẩn hóa chất lượng graphene ở quy mô công nghiệp.</p>
+        </div>
+      </main>
+    </div>
+    <div class="footer"><span>Trang Dự án</span><span>09</span></div>
+  </section>
+
+  <section class="page">
+    <div class="section-grid">
+      <aside class="side-note">
+        <div class="kicker">Tổng kết</div>
+        <h2>Reflection Essay</h2>
+        <p>Từ chưa thật sự tự tin với công nghệ đến chủ động hơn trong việc dùng công cụ số và AI.</p>
+      </aside>
+      <main class="content">
+        <div class="summary">
+          <div class="summary-item"><strong>Trước đây</strong><span>Chưa thật sự tự tin với công cụ số và AI.</span></div>
+          <div class="summary-item"><strong>Hiện tại</strong><span>Biết quản lý file, tìm nguồn, viết prompt, hợp tác số và đánh giá AI.</span></div>
+          <div class="summary-item"><strong>Tương lai</strong><span>Ứng dụng kỹ năng số vào học tập kỹ thuật, vật liệu và hàng không vũ trụ.</span></div>
+        </div>
+        <div class="card"><h3>1. Trải nghiệm và cảm nhận cá nhân</h3><p>Qua 7 bài tập, tôi nhận ra năng lực số bắt đầu từ những việc cụ thể: thao tác file, tìm kiếm thông tin học thuật, viết prompt, cộng tác trực tuyến, sáng tạo với AI, sử dụng AI có trách nhiệm và tổng quan tài liệu nghiên cứu.</p></div>
+        <div class="card"><h3>2. Thách thức và cách vượt qua</h3><p>Khó khăn lớn nhất không nằm ở việc sử dụng phần mềm, mà nằm ở thay đổi tư duy. Tôi hiểu rằng AI chỉ hiệu quả khi người dùng giao nhiệm vụ rõ ràng và biết kiểm chứng thông tin.</p></div>
+        <div class="card"><h3>3. Sự trưởng thành và tầm nhìn tương lai</h3><p>Đối với ngành <strong>Công nghệ hàng không vũ trụ</strong>, các kỹ năng này giúp tôi quản lý tài liệu kỹ thuật khoa học, tiếp cận tri thức đáng tin cậy, đọc nghiên cứu vật liệu, khai thác AI hiệu quả và thích nghi với môi trường làm việc đòi hỏi độ chính xác cao.</p></div>
+        <div class="insight"><h3>Cam kết học tập trọn đời</h3><p>Tôi xem portfolio này là điểm bắt đầu, không phải điểm kết thúc. Trong tương lai, tôi muốn tiếp tục rèn luyện khả năng đọc hiểu tài liệu kỹ thuật, đánh giá nguồn học thuật, sử dụng AI có trách nhiệm, phát triển tư duy hệ thống và ứng dụng công nghệ số vào các bài toán hàng không vũ trụ.</p></div>
+      </main>
+    </div>
+    <div class="footer"><span>Trang Tổng kết</span><span>10</span></div>
+  </section>
+
+  <script>
+    const pages = Array.from(document.querySelectorAll(".page"));
+    const navButtons = Array.from(document.querySelectorAll(".nav button"));
+    const viewButtons = Array.from(document.querySelectorAll(".control button"));
+    const progress = document.getElementById("progress");
+    const animatedItems = Array.from(document.querySelectorAll(".card, .summary-item, .placeholder, .prompt, .insight, .step, .skill, .tag"));
+
+    animatedItems.forEach((item, index) => {
+      item.classList.add("reveal");
+      item.style.transitionDelay = `${Math.min(index % 6, 5) * 45}ms`;
+    });
+
+    pages.forEach((page, index) => {
+      const actions = document.createElement("div");
+      actions.className = "page-actions";
+
+      const done = document.createElement("button");
+      done.type = "button";
+      done.className = "page-button";
+      done.textContent = "Đánh dấu hoàn thành";
+      done.addEventListener("click", () => {
+        done.classList.toggle("done");
+        done.textContent = done.classList.contains("done") ? "Đã hoàn thành" : "Đánh dấu hoàn thành";
+      });
+
+      const next = document.createElement("button");
+      next.type = "button";
+      next.className = "page-button";
+      next.textContent = index === pages.length - 1 ? "Về trang bìa" : "Trang tiếp theo";
+      next.addEventListener("click", () => {
+        pages[index === pages.length - 1 ? 0 : index + 1].scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      actions.append(done, next);
+      const target = page.querySelector(".content") || page;
+      if (!page.classList.contains("tech-cover")) target.appendChild(actions);
+    });
+
+    navButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        pages[Number(button.dataset.target)]?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    viewButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        viewButtons.forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        document.body.classList.toggle("focus-mode", button.dataset.view === "focus");
+        if (button.dataset.view === "print") window.print();
+      });
+    });
+
+    document.querySelectorAll(".tag").forEach((tag) => {
+      tag.addEventListener("click", () => tag.classList.toggle("selected"));
+    });
+
+    document.querySelectorAll(".placeholder").forEach((placeholder) => {
+      placeholder.addEventListener("click", () => {
+        placeholder.textContent = "Khu vực chèn minh chứng - hãy thay bằng ảnh trong Canva";
+        placeholder.style.borderStyle = "dashed";
+      });
+    });
+
+    const pageObserver = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      const index = pages.indexOf(visible.target);
+      pages.forEach((page) => page.classList.toggle("current", page === visible.target));
+      navButtons.forEach((button) => button.classList.toggle("active", Number(button.dataset.target) === index));
+      progress.style.width = `${((index + 1) / pages.length) * 100}%`;
+    }, { threshold: [.35, .6, .8] });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: .18 });
+
+    pages.forEach((page) => pageObserver.observe(page));
+    animatedItems.forEach((item) => revealObserver.observe(item));
+  </script>
+</body>
+</html>
+
