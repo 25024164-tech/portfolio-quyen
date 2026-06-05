@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Digital Portfolio - Đinh Thị Hồng Liễu</title>
+  <title>Digital Portfolio - Bùi Thị Phương Quyên</title>
   <style>
     :root {
-      --ink: #0b1f33;
-      --muted: #5b7188;
-      --paper: #edf7ff;
+      --ink: #123044;
+      --muted: #577083;
+      --paper: #eef9ff;
       --panel: rgba(255, 255, 255, .9);
-      --line: #9cc9e8;
+      --line: #b8dff1;
       --cyan: #38bdf8;
-      --blue: #2563eb;
-      --deep: #0f2f55;
-      --soft: #dbeafe;
-      --shadow: 0 26px 72px rgba(15, 47, 85, .22);
+      --blue: #0ea5c6;
+      --deep: #075985;
+      --soft: #dff5ff;
+      --shadow: 0 24px 70px rgba(8, 47, 73, .18);
     }
 
     * { box-sizing: border-box; }
@@ -27,11 +27,11 @@
       font-family: "Segoe UI", Arial, sans-serif;
       line-height: 1.5;
       background:
-        linear-gradient(rgba(15,47,85,.09) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(15,47,85,.09) 1px, transparent 1px),
+        linear-gradient(rgba(14,165,198,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14,165,198,.08) 1px, transparent 1px),
         radial-gradient(circle at 15% 8%, rgba(56,189,248,.25), transparent 30%),
-        radial-gradient(circle at 85% 12%, rgba(37,99,235,.20), transparent 32%),
-        linear-gradient(180deg, #eaf6ff, #c7e7ff 45%, #edf7ff);
+        radial-gradient(circle at 85% 12%, rgba(14,165,198,.20), transparent 32%),
+        linear-gradient(180deg, #e8f8ff, #cfeeff 45%, #eef9ff);
       background-size: 42px 42px, 42px 42px, auto, auto, auto;
     }
 
@@ -58,7 +58,7 @@
     }
 
     .nav button, .control button, .page-button {
-      border: 1px solid #93c5fd;
+      border: 1px solid #9bdcf2;
       border-radius: 999px;
       padding: 9px 14px;
       color: var(--deep);
@@ -127,11 +127,11 @@
       border: 1px solid rgba(255,255,255,.72);
       border-radius: 18px;
       background:
-        linear-gradient(rgba(15,47,85,.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(15,47,85,.06) 1px, transparent 1px),
-        radial-gradient(circle at 12% 18%, rgba(37,99,235,.17), transparent 28%),
+        linear-gradient(rgba(14,165,198,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14,165,198,.055) 1px, transparent 1px),
+        radial-gradient(circle at 12% 18%, rgba(14,165,198,.18), transparent 28%),
         radial-gradient(circle at 88% 82%, rgba(56,189,248,.16), transparent 34%),
-        linear-gradient(115deg, rgba(37,99,235,.13), transparent 40%),
+        linear-gradient(115deg, rgba(14,165,198,.13), transparent 40%),
         linear-gradient(45deg, transparent 62%, rgba(147,197,253,.22)),
         var(--paper);
       background-size: 38px 38px, 38px 38px, auto, auto, auto, auto, auto;
@@ -169,12 +169,12 @@
       display: grid;
       place-items: center;
       background:
-        linear-gradient(rgba(56,189,248,.12) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(56,189,248,.12) 1px, transparent 1px),
-        radial-gradient(circle at 50% 50%, rgba(56,189,248,.30), transparent 23%),
-        radial-gradient(circle at 18% 80%, rgba(37,99,235,.28), transparent 32%),
-        radial-gradient(circle at 86% 18%, rgba(147,197,253,.24), transparent 26%),
-        linear-gradient(135deg, #061a2f, #0f2f55 45%, #020617);
+        linear-gradient(rgba(14,165,198,.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14,165,198,.10) 1px, transparent 1px),
+        radial-gradient(circle at 50% 50%, rgba(56,189,248,.34), transparent 23%),
+        radial-gradient(circle at 18% 80%, rgba(14,165,198,.24), transparent 32%),
+        radial-gradient(circle at 86% 18%, rgba(186,230,253,.38), transparent 26%),
+        linear-gradient(135deg, #e8f9ff, #bfeeff 45%, #ecfbff);
       background-size: cover;
       background-position: center;
     }
@@ -185,10 +185,10 @@
       margin: 0;
       font-size: 96px;
       line-height: 1;
-      color: #eef8ff;
+      color: var(--deep);
       letter-spacing: .01em;
       text-align: center;
-      text-shadow: 0 18px 48px rgba(0,0,0,.42), 0 0 30px rgba(56,189,248,.70);
+      text-shadow: 0 20px 60px rgba(7,89,133,.22), 0 0 28px rgba(56,189,248,.46);
     }
 
     .tech-cover h1::after {
@@ -199,7 +199,7 @@
       width: 100%;
       height: 5px;
       border-radius: 999px;
-      background: linear-gradient(90deg, transparent, var(--cyan), var(--deep), transparent);
+      background: linear-gradient(90deg, transparent, var(--cyan), var(--blue), transparent);
       animation: scanLine 2.4s ease-in-out infinite;
     }
 
@@ -242,7 +242,7 @@
 
     .chip {
       position: absolute;
-      right: 170px;
+      right: 145px;
       top: 92px;
       width: 132px;
       height: 132px;
@@ -316,6 +316,67 @@
       border-radius: 20px;
       background: linear-gradient(180deg, #ffffff, #dff5ff);
       border: 2px solid #9bdcf2;
+    }
+
+    .laptop {
+      position: absolute;
+      right: 170px;
+      bottom: 112px;
+      width: 190px;
+      height: 126px;
+      animation: floatTech 3.8s ease-in-out infinite;
+      animation-delay: -.7s;
+    }
+
+    .laptop-screen {
+      position: absolute;
+      left: 24px;
+      top: 0;
+      width: 142px;
+      height: 92px;
+      border: 3px solid #7dd3fc;
+      border-radius: 16px;
+      background:
+        linear-gradient(90deg, rgba(56,189,248,.18) 1px, transparent 1px),
+        linear-gradient(rgba(56,189,248,.18) 1px, transparent 1px),
+        linear-gradient(135deg, #082f49, #0f5f82);
+      background-size: 16px 16px;
+      box-shadow: 0 18px 38px rgba(8,47,73,.18), inset 0 0 24px rgba(56,189,248,.22);
+      overflow: hidden;
+    }
+
+    .laptop-screen::before {
+      content: "DATA";
+      position: absolute;
+      left: 20px;
+      top: 28px;
+      color: #e0f2fe;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: .12em;
+    }
+
+    .laptop-screen::after {
+      content: "";
+      position: absolute;
+      left: -40%;
+      top: 0;
+      width: 42%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.42), transparent);
+      animation: beamSweep 3.8s ease-in-out infinite;
+    }
+
+    .laptop-base {
+      position: absolute;
+      left: 0;
+      bottom: 5px;
+      width: 190px;
+      height: 28px;
+      border-radius: 8px 8px 18px 18px;
+      background: linear-gradient(180deg, #e0f2fe, #7dd3fc);
+      border: 2px solid #7dd3fc;
+      box-shadow: 0 16px 28px rgba(8,47,73,.14);
     }
 
     .node {
@@ -525,6 +586,48 @@
       height: 260px;
       object-fit: cover;
       object-position: center 42%;
+    }
+
+    .quyen-photo img {
+      height: 310px;
+      object-position: center 28%;
+    }
+
+    .data-visual {
+      position: relative;
+      min-height: 230px;
+      margin: 18px 0 4px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      gap: 10px;
+      padding: 18px;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(56,189,248,.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56,189,248,.12) 1px, transparent 1px),
+        radial-gradient(circle at 25% 25%, rgba(56,189,248,.24), transparent 30%),
+        radial-gradient(circle at 85% 70%, rgba(14,165,198,.18), transparent 32%),
+        linear-gradient(135deg, rgba(232,249,255,.96), rgba(186,230,253,.86));
+      background-size: 24px 24px, 24px 24px, auto, auto, auto;
+      box-shadow: 0 16px 34px rgba(15,47,85,.20);
+    }
+
+    .data-visual span {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      min-height: 74px;
+      border: 1px solid rgba(14,165,198,.34);
+      border-radius: 18px;
+      color: var(--deep);
+      font-weight: 900;
+      letter-spacing: .08em;
+      background: rgba(255,255,255,.64);
+      box-shadow: inset 0 0 20px rgba(56,189,248,.16);
     }
 
     .tag-row {
@@ -780,43 +883,44 @@
     <div class="circuit right"></div>
     <div class="chip"><span>AI</span></div>
     <div class="robot"><div class="robot-head"></div><div class="robot-body"></div></div>
+    <div class="laptop"><div class="laptop-screen"></div><div class="laptop-base"></div></div>
     <span class="node n1"></span><span class="node n2"></span><span class="node n3"></span><span class="node n4"></span>
     <h1>Digital Portfolio</h1>
-    <div class="footer"><span>Đinh Thị Hồng Liễu</span><span>01</span></div>
+    <div class="footer"><span>Bùi Thị Phương Quyên</span><span>01</span></div>
   </section>
 
   <section class="page">
     <div class="section-grid">
       <aside class="side-note">
         <div class="kicker">Giới thiệu</div>
-        <h2>Đinh Thị Hồng Liễu</h2>
-        <p><strong>Ngành học:</strong> Công nghệ hàng không vũ trụ</p>
-        <p><strong>Định hướng:</strong> Phát triển theo hướng kỹ sư/chuyên viên ứng dụng công nghệ số và AI trong lĩnh vực hàng không vũ trụ, đặc biệt ở mô phỏng, tối ưu quy trình và an toàn hệ thống.</p>
-        <div class="profile-photo"><img src="profile-photo.jpg" alt="Ảnh cá nhân của Đinh Thị Hồng Liễu"></div>
+        <h2>Bùi Thị Phương Quyên</h2>
+        <p><strong>Ngành học:</strong> Khoa học dữ liệu</p>
+        <p><strong>Định hướng:</strong> Phát triển theo hướng chuyên viên phân tích dữ liệu ứng dụng AI, tập trung vào khai thác dữ liệu, trực quan hóa thông tin và hỗ trợ ra quyết định.</p>
+        <div class="profile-photo quyen-photo"><img src="quyen-profile-photo.jpg" alt="Ảnh cá nhân của Bùi Thị Phương Quyên"></div>
         <div class="tag-row">
-          <span class="tag">Đọc sách</span>
-          <span class="tag">Công nghệ bay</span>
+          <span class="tag">Trực quan hóa dữ liệu</span>
+          <span class="tag">Phân tích dữ liệu</span>
           <span class="tag">AI ứng dụng</span>
         </div>
       </aside>
       <main class="content">
         <div class="summary">
-          <div class="summary-item"><strong>Chân dung</strong><span>Sinh viên Công nghệ hàng không vũ trụ yêu thích đọc sách và công nghệ.</span></div>
-          <div class="summary-item"><strong>Giá trị</strong><span>Tư duy kỹ thuật, học công cụ mới, phản biện thông tin.</span></div>
+          <div class="summary-item"><strong>Chân dung</strong><span>Sinh viên Khoa học dữ liệu quan tâm đến AI, dữ liệu và trực quan hóa.</span></div>
+          <div class="summary-item"><strong>Giá trị</strong><span>Tư duy phân tích, học công cụ mới, phản biện thông tin.</span></div>
           <div class="summary-item"><strong>Mục tiêu</strong><span>Xây dựng hồ sơ năng lực số có minh chứng rõ ràng.</span></div>
         </div>
         <div class="card">
           <h3>1. Lời chào & Giới thiệu bản thân</h3>
-          <p>Xin chào, tôi là <strong>Đinh Thị Hồng Liễu</strong>, hiện đang theo học ngành <strong>Công nghệ hàng không vũ trụ</strong>. Tôi xem Digital Portfolio này như một không gian học tập số để ghi lại quá trình tôi từng bước khám phá, thực hành và làm chủ các công cụ công nghệ trong môn học.</p>
-          <p>Tôi yêu thích đọc sách, tìm hiểu công nghệ bay và quan tâm đến cách trí tuệ nhân tạo có thể hỗ trợ học tập, mô phỏng và phân tích trong các lĩnh vực kỹ thuật. Những mối quan tâm này giúp tôi nhìn thấy công nghệ không chỉ là công cụ thao tác, mà còn là phương pháp tư duy để giải quyết vấn đề phức tạp.</p>
+          <p>Xin chào, tôi là <strong>Bùi Thị Phương Quyên</strong>, hiện đang theo học ngành <strong>Khoa học dữ liệu</strong>. Tôi xem Digital Portfolio này như một không gian học tập số để ghi lại quá trình tôi từng bước khám phá, thực hành và làm chủ các công cụ công nghệ trong môn học.</p>
+          <p>Tôi quan tâm đến phân tích dữ liệu, trí tuệ nhân tạo ứng dụng và trực quan hóa thông tin. Những mối quan tâm này giúp tôi nhìn thấy công nghệ không chỉ là công cụ thao tác, mà còn là phương pháp tư duy để phát hiện vấn đề, nhận diện xu hướng và ra quyết định tốt hơn.</p>
         </div>
         <div class="card">
           <h3>2. Định hướng phát triển & Mục tiêu học tập</h3>
-          <p>Tôi muốn phát triển năng lực sử dụng công nghệ số và AI để tìm kiếm tri thức, mô phỏng ý tưởng, quản lý tài liệu kỹ thuật và trình bày kết quả một cách rõ ràng. Với ngành Công nghệ hàng không vũ trụ, đây là nền tảng quan trọng để tiếp cận các hệ thống phức tạp một cách khoa học và an toàn.</p>
+          <p>Tôi muốn phát triển năng lực sử dụng công nghệ số và AI để tìm kiếm tri thức, xử lý dữ liệu, phân tích thông tin và trình bày kết quả một cách rõ ràng. Với ngành Khoa học dữ liệu, đây là nền tảng quan trọng để biến dữ liệu thô thành insight có giá trị.</p>
         </div>
         <div class="insight">
           <h3>Điểm nhấn thương hiệu cá nhân</h3>
-          <p>Tôi muốn hình ảnh cá nhân của mình gắn với sự kỷ luật trong học tập, tinh thần đọc sâu, khả năng học công cụ mới nhanh và thái độ dùng AI như một trợ lý tư duy thay vì một lối tắt.</p>
+          <p>Tôi muốn hình ảnh cá nhân của mình gắn với sự cẩn thận trong dữ liệu, khả năng học công cụ mới nhanh, tư duy phản biện và thái độ dùng AI như một trợ lý tư duy thay vì một lối tắt.</p>
         </div>
       </main>
     </div>
@@ -829,7 +933,7 @@
         <div class="kicker">Bài 1</div>
         <h2>Thao tác cơ bản với tệp tin và thư mục</h2>
         <p>Thực hành tạo, đổi tên, sao chép, di chuyển, xóa và khôi phục tệp/thư mục trên Windows.</p>
-        <a class="pdf-slot" href="btCNS1.pdf" target="_blank">Minh chứng PDF - Bài 1<span>Mở btCNS1.pdf</span></a>
+        <a class="pdf-slot" href="btCNS1pq.pdf" target="_blank">Minh chứng PDF - Bài 1<span>Mở btCNS1pq.pdf</span></a>
       </aside>
       <main class="content">
         <div class="summary">
@@ -849,8 +953,8 @@
           <p>Bài làm giúp tôi hiểu rằng thao tác tệp tin không chỉ là kỹ năng kỹ thuật nhỏ, mà là nền tảng của quản lý tài nguyên số. Việc biết file đang ở đâu, bản nào là bản sao, bản nào đã bị di chuyển hoặc xóa giúp giảm nhầm lẫn và tăng khả năng kiểm soát dữ liệu cá nhân.</p>
         </div>
         <div class="insight">
-          <h3>Liên hệ với Công nghệ hàng không vũ trụ</h3>
-          <p>Trong các lĩnh vực kỹ thuật như hàng không vũ trụ, tài liệu, bản vẽ, báo cáo và dữ liệu mô phỏng cần được tổ chức chặt chẽ. Một thao tác nhầm với file có thể dẫn đến dùng sai phiên bản tài liệu, vì vậy kỹ năng quản lý file là bước đầu của tư duy chính xác và an toàn.</p>
+          <h3>Liên hệ với Khoa học dữ liệu</h3>
+          <p>Trong Khoa học dữ liệu, dữ liệu và tài liệu phân tích cần được tổ chức có hệ thống. Một file sai phiên bản hoặc đặt sai vị trí có thể làm sai lệch quá trình phân tích, vì vậy kỹ năng quản lý file là bước đầu của tư duy dữ liệu chính xác.</p>
         </div>
       </main>
     </div>
@@ -862,35 +966,35 @@
       <aside class="side-note">
         <div class="kicker">Bài 2</div>
         <h2>Tìm kiếm và đánh giá thông tin học thuật</h2>
-        <p>Chủ đề: vật liệu composite siêu nhẹ trong chế tạo vỏ tên lửa đẩy thế hệ mới.</p>
+        <p>Chủ đề: Ứng dụng Machine Learning trong Khoa học Dữ liệu.</p>
         <div class="tag-row">
           <span class="tag">site:</span><span class="tag">filetype:</span><span class="tag">intitle:</span><span class="tag">"quotes"</span>
         </div>
-        <a class="pdf-slot" href="btCNS2.pdf" target="_blank">Minh chứng PDF - Bài 2<span>Mở btCNS2.pdf</span></a>
+        <a class="pdf-slot" href="cns2pq.pdf" target="_blank">Minh chứng PDF - Bài 2<span>Mở cns2pq.pdf</span></a>
       </aside>
       <main class="content">
         <div class="summary">
-          <div class="summary-item"><strong>Phạm vi</strong><span>Nghiên cứu vật liệu chịu nhiệt, bền cơ học cao giai đoạn 2018-2026.</span></div>
-          <div class="summary-item"><strong>Nguồn tìm kiếm</strong><span>IEEE Xplore, ScienceDirect, Google Scholar, AIAA, NASA, SpaceX.</span></div>
-          <div class="summary-item"><strong>Mục tiêu</strong><span>Đánh giá khả năng giảm trọng lượng để tối ưu nhiên liệu.</span></div>
+          <div class="summary-item"><strong>Phạm vi</strong><span>Machine Learning trong Data Science, data-centric AI, LLM và đánh giá mô hình.</span></div>
+          <div class="summary-item"><strong>Nguồn tìm kiếm</strong><span>Google Scholar, arXiv, IEEE Xplore, ScienceDirect, Nature, ICML, NeurIPS.</span></div>
+          <div class="summary-item"><strong>Mục tiêu</strong><span>Đánh giá nguồn học thuật đáng tin cậy giai đoạn 2015-2025.</span></div>
         </div>
         <div class="card">
           <h3>Quy trình thực hiện</h3>
-          <p>Tôi chọn chủ đề liên quan trực tiếp đến ngành Công nghệ hàng không vũ trụ: <strong>nghiên cứu và ứng dụng vật liệu composite siêu nhẹ trong chế tạo vỏ tên lửa đẩy thế hệ mới</strong>. Quá trình tìm kiếm kết hợp cơ sở dữ liệu học thuật, tạp chí chuyên ngành, sách chuyên khảo và nguồn mở từ cơ quan/doanh nghiệp hàng không vũ trụ.</p>
+          <p>Tôi chọn chủ đề liên quan trực tiếp đến ngành Khoa học dữ liệu: <strong>Ứng dụng Machine Learning trong Data Science</strong>. Quá trình tìm kiếm tập trung vào thuật toán học máy, deep learning, data-centric AI, hệ thống ML, benchmark evaluation và xu hướng phát triển ngành.</p>
         </div>
         <table>
           <thead><tr><th>STT</th><th>Nhóm nguồn</th><th>Ví dụ nguồn</th><th>Giá trị sử dụng</th><th>Độ tin cậy</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>CSDL học thuật</td><td>IEEE Xplore, ScienceDirect</td><td>Bài báo phản biện kín, có mô phỏng số và thực nghiệm chi tiết.</td><td>4/4</td></tr>
-            <tr><td>2</td><td>Tạp chí chuyên ngành</td><td>AIAA Journal, Nature Aerospace</td><td>Thông số kỹ thuật, hệ số an toàn, độ bền vật liệu.</td><td>4/4</td></tr>
-            <tr><td>3</td><td>Sách chuyên khảo</td><td>AIAA Education Series, Springer</td><td>Nền tảng lý thuyết vật liệu và kết cấu hàng không.</td><td>3/4</td></tr>
-            <tr><td>4</td><td>Nguồn mở kỹ thuật</td><td>NASA, ESA, SpaceX</td><td>Báo cáo thực tế từ chương trình Artemis/SLS và tài liệu doanh nghiệp.</td><td>3/4</td></tr>
+            <tr><td>1</td><td>Bài báo nền tảng</td><td>Deep Learning - LeCun, Bengio & Hinton (Nature, 2015)</td><td>Cơ sở lý thuyết quan trọng cho deep learning.</td><td>5/5</td></tr>
+            <tr><td>2</td><td>Benchmark/Data-centric AI</td><td>DataPerf, SWE-bench, DS-1000, DS-Bench</td><td>Đánh giá năng lực hệ thống ML/AI trong tác vụ dữ liệu thực tế.</td><td>4-5/5</td></tr>
+            <tr><td>3</td><td>Tổng quan mới</td><td>IEEE Access, ScienceDirect, arXiv 2024-2025</td><td>Cập nhật LLM, ML systems và xu hướng triển khai thực tế.</td><td>4-5/5</td></tr>
+            <tr><td>4</td><td>Nguồn ngành</td><td>Kaggle Survey, JetBrains Data Science Trends</td><td>Phản ánh thực tiễn nghề nghiệp và xu hướng công cụ.</td><td>3/5</td></tr>
           </tbody>
         </table>
         <div class="three-col">
-          <div class="card"><h3>Authority</h3><p>Ưu tiên AIAA, NASA, tạp chí ISI/Scopus và cơ sở dữ liệu học thuật có phản biện.</p></div>
-          <div class="card"><h3>Accuracy</h3><p>Kiểm tra tác giả, phương pháp nghiên cứu, trích dẫn, số liệu thực nghiệm và tính cập nhật.</p></div>
-          <div class="card"><h3>Relevance</h3><p>Nguồn phải liên quan trực tiếp đến composite, chịu nhiệt, độ bền cơ học và ứng dụng tên lửa.</p></div>
+          <div class="card"><h3>Authority</h3><p>Ưu tiên tác giả, hội nghị, tạp chí và nhà xuất bản có uy tín trong ML/Data Science.</p></div>
+          <div class="card"><h3>Accuracy</h3><p>Kiểm tra trích dẫn, năm xuất bản, phương pháp đánh giá và mức độ được cộng đồng công nhận.</p></div>
+          <div class="card"><h3>Relevance</h3><p>Nguồn phải liên quan trực tiếp đến học máy, deep learning, data-centric AI hoặc hệ thống ML.</p></div>
         </div>
       </main>
     </div>
@@ -903,7 +1007,7 @@
         <div class="kicker">Bài 3</div>
         <h2>Viết Prompt hiệu quả cho học tập</h2>
         <p>Thử nghiệm 9 prompt trên 3 tác vụ học tập: tóm tắt bài đọc, giải thích khái niệm và tạo câu hỏi ôn tập.</p>
-        <a class="pdf-slot" href="btCNS3.pdf" target="_blank">Minh chứng PDF - Bài 3<span>Mở btCNS3.pdf</span></a>
+        <a class="pdf-slot" href="btCNS3pq.pdf" target="_blank">Minh chứng PDF - Bài 3<span>Mở btCNS3pq.pdf</span></a>
       </aside>
       <main class="content">
         <div class="summary">
@@ -937,7 +1041,7 @@
         <div class="kicker">Bài 4</div>
         <h2>Sử dụng công cụ hợp tác trực tuyến</h2>
         <p>Công cụ: <strong>Trello, Google Docs, Google Drive và Zalo/Facebook</strong></p>
-        <a class="pdf-slot" href="btCNS4.pdf" target="_blank">Minh chứng PDF - Bài 4<span>Mở btCNS4.pdf</span></a>
+        <a class="pdf-slot" href="btCNS4pq.pdf" target="_blank">Minh chứng PDF - Bài 4<span>Mở btCNS4pq.pdf</span></a>
       </aside>
       <main class="content">
         <div class="summary">
@@ -972,7 +1076,7 @@
         <div class="kicker">Bài 5</div>
         <h2>AI tạo sinh hỗ trợ sáng tạo nội dung</h2>
         <p>Sản phẩm: <strong>bài thuyết trình 10 slide về biến đổi khí hậu và hành động của giới trẻ</strong></p>
-        <a class="pdf-slot" href="btCNS5.pdf" target="_blank">Minh chứng PDF - Bài 5<span>Mở btCNS5.pdf</span></a>
+        <a class="pdf-slot" href="btCNS5pq.pdf" target="_blank">Minh chứng PDF - Bài 5<span>Mở btCNS5pq.pdf</span></a>
       </aside>
       <main class="content">
         <div class="summary">
@@ -1002,7 +1106,7 @@
         <div class="kicker">Bài 6</div>
         <h2>Sử dụng AI có trách nhiệm</h2>
         <p>Bộ nguyên tắc cá nhân giúp tôi dùng AI trung thực, an toàn và có tư duy phản biện.</p>
-        <a class="pdf-slot" href="btCNS6.pdf" target="_blank">Minh chứng PDF - Bài 6<span>Mở btCNS6.pdf</span></a>
+        <a class="pdf-slot" href="btCNS6pq.pdf" target="_blank">Minh chứng PDF - Bài 6<span>Mở btCNS6pq.pdf</span></a>
       </aside>
       <main class="content">
         <div class="summary">
@@ -1036,7 +1140,7 @@
         <div class="kicker">Bài 7</div>
         <h2>Ứng dụng vật liệu Graphene trong pin</h2>
         <p>Tổng quan 5 bài báo khoa học cập nhật về graphene trong pin lithium-ion, pin xe điện và quản lý nhiệt.</p>
-        <a class="pdf-slot" href="btCNS7.pdf" target="_blank">Minh chứng PDF - Bài 7<span>Mở btCNS7.pdf</span></a>
+        <a class="pdf-slot" href="btCNS7pq.pdf" target="_blank">Minh chứng PDF - Bài 7<span>Mở btCNS7pq.pdf</span></a>
       </aside>
       <main class="content">
         <div class="summary">
@@ -1073,12 +1177,12 @@
         <div class="summary">
           <div class="summary-item"><strong>Trước đây</strong><span>Chưa thật sự tự tin với công cụ số và AI.</span></div>
           <div class="summary-item"><strong>Hiện tại</strong><span>Biết quản lý file, tìm nguồn, viết prompt, hợp tác số và đánh giá AI.</span></div>
-          <div class="summary-item"><strong>Tương lai</strong><span>Ứng dụng kỹ năng số vào học tập kỹ thuật, vật liệu và hàng không vũ trụ.</span></div>
+          <div class="summary-item"><strong>Tương lai</strong><span>Ứng dụng kỹ năng số vào phân tích dữ liệu, Machine Learning và trực quan hóa thông tin.</span></div>
         </div>
         <div class="card"><h3>1. Trải nghiệm và cảm nhận cá nhân</h3><p>Qua 7 bài tập, tôi nhận ra năng lực số bắt đầu từ những việc cụ thể: thao tác file, tìm kiếm thông tin học thuật, viết prompt, cộng tác trực tuyến, sáng tạo với AI, sử dụng AI có trách nhiệm và tổng quan tài liệu nghiên cứu.</p></div>
         <div class="card"><h3>2. Thách thức và cách vượt qua</h3><p>Khó khăn lớn nhất không nằm ở việc sử dụng phần mềm, mà nằm ở thay đổi tư duy. Tôi hiểu rằng AI chỉ hiệu quả khi người dùng giao nhiệm vụ rõ ràng và biết kiểm chứng thông tin.</p></div>
-        <div class="card"><h3>3. Sự trưởng thành và tầm nhìn tương lai</h3><p>Đối với ngành <strong>Công nghệ hàng không vũ trụ</strong>, các kỹ năng này giúp tôi quản lý tài liệu kỹ thuật khoa học, tiếp cận tri thức đáng tin cậy, đọc nghiên cứu vật liệu, khai thác AI hiệu quả và thích nghi với môi trường làm việc đòi hỏi độ chính xác cao.</p></div>
-        <div class="insight"><h3>Cam kết học tập trọn đời</h3><p>Tôi xem portfolio này là điểm bắt đầu, không phải điểm kết thúc. Trong tương lai, tôi muốn tiếp tục rèn luyện khả năng đọc hiểu tài liệu kỹ thuật, đánh giá nguồn học thuật, sử dụng AI có trách nhiệm, phát triển tư duy hệ thống và ứng dụng công nghệ số vào các bài toán hàng không vũ trụ.</p></div>
+        <div class="card"><h3>3. Sự trưởng thành và tầm nhìn tương lai</h3><p>Đối với ngành <strong>Khoa học dữ liệu</strong>, các kỹ năng này giúp tôi quản lý tài liệu học thuật, tiếp cận tri thức đáng tin cậy, đọc nghiên cứu về Machine Learning, khai thác AI hiệu quả và trình bày kết quả phân tích một cách rõ ràng.</p></div>
+        <div class="insight"><h3>Cam kết học tập trọn đời</h3><p>Tôi xem portfolio này là điểm bắt đầu, không phải điểm kết thúc. Trong tương lai, tôi muốn tiếp tục rèn luyện khả năng đọc hiểu tài liệu học thuật, đánh giá nguồn thông tin, sử dụng AI có trách nhiệm, phát triển tư duy hệ thống và ứng dụng công nghệ số vào các bài toán dữ liệu thực tế.</p></div>
       </main>
     </div>
     <div class="footer"><span>Trang Tổng kết</span><span>10</span></div>
@@ -1168,4 +1272,5 @@
   </script>
 </body>
 </html>
+
 
